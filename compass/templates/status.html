@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% load staticfiles %}
+  <h1>Compass</h1>
+
+  <p>
+    <div>Compass Heading: {{ heading }}</div>
+  </p>
+{% endblock content %}
+
+{% block afterbody %}
+  <script type="text/javascript" src='{% static "jquery-1.12.1.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "chat.js" %}'></script>
+{% endblock afterbody %}
