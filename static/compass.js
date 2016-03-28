@@ -16,4 +16,13 @@ $(function() {
     	$('#heading').text(message.data);
         //var data = JSON.parse(message.data);
     };
+    
+    $('#chatform').on('submit', function(event) {
+    var message = {
+        handle: "JOHNS",
+        message: $('#message').val(),
+    }
+    chatsock.send(JSON.stringify(message));
+    return false;
+});
 });

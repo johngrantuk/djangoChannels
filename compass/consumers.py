@@ -6,14 +6,15 @@ def ws_message(message):
     # ASGI WebSocket packet-received and send-packet message types
     # both have a "text" key for their textual data.
     print("Received!!")
-    worker = message.channel_session['worker']                                  # Checks where message came from.
+    Group("compass").send({'text': message['text']})
+    #worker = message.channel_session['worker']                                  # Checks where message came from.
     
-    if worker == 'compass':
-        Group('compass').send({'text': message['text']})
-    else:
-        message.reply_channel.send({
-           "text": "I don't know what worker you are... :(",
-        })
+    #if worker == 'compass':
+    #else:
+    #    Group('compass').send({'text': message['text']})
+     #   message.reply_channel.send({
+      #     "text": "I don't know what worker you are... :(",
+       # })
 
  
 @channel_session   
@@ -40,7 +41,7 @@ def ws_disconnect(message):
     
     if worker == 'compass':
         print("Compass down.")
-        Group('compass').discard(message.reply_channel)
+        Group("compass").discard(message.reply_channel)
     else:
         print("I don't know who it was though.")
     
